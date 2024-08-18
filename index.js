@@ -18,14 +18,14 @@ const shoppinglist = document.getElementById('list');
 btn.addEventListener("click", function () {
     let name = item.value;
 
-    push(shoppingListInDB, name);
+    if (name.trim() != "") { push(shoppingListInDB, name); }
     //console.log(name);
     clearField();
 });
 
 //function for adding data on screen on using enter key from keyboard
-item.addEventListener( 'keypress', function (e) {
-    if(e.key=== "Enter"){
+item.addEventListener('keypress', function (e) {
+    if (e.key === "Enter") {
         btn.click()
     }
 });
@@ -77,5 +77,5 @@ function addToList(item) {
         let exactlocationItem = ref(database, `shoppinglist/${itemId}`);
         remove(exactlocationItem);
 
-    }); 
+    });
 }
